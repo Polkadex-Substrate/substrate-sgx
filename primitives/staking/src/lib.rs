@@ -215,4 +215,15 @@ pub trait StakingInterface {
 	fn set_current_era(era: EraIndex);
 }
 
+pub trait SuperNominator: StakingInterface {
+	/// Bond `value` of `who`'s balance to a super nominator.
+	fn super_bond(sub_nominator: &Self::AccountId, super_nominator: &Self::AccountId, value: Self::Balance) -> DispatchResult;
+
+	/// Unbond `value` of a `sub nominator`'s balance from a super nominator.
+	fn super_unbond(super_nominator: &Self::AccountId, sub_nominator: &Self::AccountId, value: Self::Balance) -> DispatchResult;
+
+	/// Withdraw `value` from super nominator's unlocking balance to sub.
+	fn super_withdraw(super_nominator: &Self::AccountId, sub_nominator: &Self::AccountId, value: Self::Balance) -> DispatchResult;
+}
+
 sp_core::generate_feature_enabled_macro!(runtime_benchmarks_enabled, feature = "runtime-benchmarks", $);
