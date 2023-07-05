@@ -709,7 +709,6 @@ pub mod pallet {
 		) -> DispatchResultWithPostInfo {
 			Migration::<T>::ensure_migrated()?;
 			let origin = ensure_signed(origin)?;
-			let code_len = code.len() as u32;
 
 			let (module, deposit) = Self::try_upload_code(
 				origin.clone(),
