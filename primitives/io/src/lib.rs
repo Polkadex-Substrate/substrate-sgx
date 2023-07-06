@@ -1661,17 +1661,8 @@ mod allocator_impl {
 #[cfg(all(not(feature = "disable_panic_handler"), not(feature = "std")))]
 #[panic_handler]
 #[no_mangle]
-pub fn panic(info: &core::panic::PanicInfo) -> ! {
-	let message = sp_std::alloc::format!("{}", info);
-	#[cfg(feature = "improved_panic_error_reporting")]
-	{
-		panic_handler::abort_on_panic(&message);
-	}
-	#[cfg(not(feature = "improved_panic_error_reporting"))]
-	{
-		logging::log(LogLevel::Error, "runtime", message.as_bytes());
-		core::arch::wasm32::unreachable();
-	}
+pub fn panic(_: &core::panic::PanicInfo) -> ! {
+	loop{}
 }
 
 /// A default OOM handler for WASM environment.

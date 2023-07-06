@@ -43,6 +43,7 @@ substrate-test-runtime-client = { version = "2.0.0", path = "../../test-utils/ru
 runtime-benchmarks = []
 try-runtime = []
 default = ["std"]
+sgx = ["sp-application-crypto/full_crypto"]
 std = [
 	"codec/std",
 	"either/use_std",

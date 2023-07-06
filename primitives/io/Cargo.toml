@@ -43,6 +43,7 @@ rustversion = "1.0.6"
 
 [features]
 default = ["std"]
+sgx = ["sp-core/full_crypto"]
 std = [
 	"bytes/std",
 	"sp-externalities/std",

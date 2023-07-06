@@ -49,6 +49,7 @@ frame-system = { version = "4.0.0-dev", path = "../system" }
 
 [features]
 default = ["std"]
+sgx = ["sp-io/sgx", "sp-runtime/sgx"]
 std = [
 	"sp-core/std",
 	"k256/std",
